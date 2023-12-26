@@ -129,7 +129,7 @@ def exit_clean_up(signal, frame):
     try:
         LOGGER.info("Please wait, while we clean up and stop the running downloads")
         run_async_to_sync(clean_all())
-        srun(["pkill', '-9', '-f', f'gunicorn|{bot_cache["pkgs"][-1]}"])
+        srun(['pkill', '-9', '-f', f'gunicorn|{bot_cache["pkgs"][-1]}'])
         exit(0)
     except KeyboardInterrupt:
         LOGGER.warning("Force Exiting before the cleanup finishes!")
