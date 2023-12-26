@@ -9,6 +9,7 @@ from bot import (
     QbInterval,
     bot,
     botloop,
+    bot_cache,
     m_queue,
     scheduler,
 )
@@ -88,7 +89,7 @@ async def restart(client, message):
     await clean_all()
     await (
         await create_subprocess_exec(
-            "pkill", "-9", "-f", "gunicorn|aria2c|rclone|qbittorrent-nox|ffmpeg"
+            "pkill', '-9', '-f', f'gunicorn|{bot_cache["pkgs"][-1]}"
         )
     ).wait()
     await (await create_subprocess_exec("python3", "update.py")).wait()
