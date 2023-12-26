@@ -28,6 +28,7 @@ from bot import (
     aria2,
     get_client,
     status_dict,
+    bot_cache,
     status_dict_lock,
 )
 from json import loads as jsnloads
