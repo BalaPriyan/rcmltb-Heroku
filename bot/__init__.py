@@ -51,7 +51,7 @@ remotes_multi = []
 aria2_options = {}
 qbit_options = {}
 rss_dict = {}
-
+bot_cache = {}
 status_dict_lock = Lock()
 status_dict = {}
 status_reply_dict_lock = Lock()
