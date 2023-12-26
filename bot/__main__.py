@@ -87,11 +87,7 @@ async def restart(client, message):
     if QbInterval:
         QbInterval[0].cancel()
     await clean_all()
-    await (
-        await create_subprocess_exec(
-            "pkill', '-9', '-f', f'gunicorn|{bot_cache["pkgs"][-1]}"
-        )
-    ).wait()
+    await (await create_subprocess_exec('pkill', '-9', '-f', f'gunicorn|{bot_cache["pkgs"][-1]}')).wait()
     await (await create_subprocess_exec("python3", "update.py")).wait()
     async with aiopen(".restartmsg", "w") as f:
         await f.write(f"{restart_msg.chat.id}\n{restart_msg.id}\n")
