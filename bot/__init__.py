@@ -399,8 +399,7 @@ config_dict = {
     "YT_DLP_OPTIONS": YT_DLP_OPTIONS,
 }
 
-
-
+QB_SERVER_PORT = environ.get('QB_SERVER_PORT')
 if QB_BASE_URL:
     Popen(
         f"gunicorn qbitweb.wserver:app --bind 0.0.0.0:{QB_SERVER_PORT} --worker-class gevent",
@@ -511,7 +510,7 @@ bot = tgClient(
     api_hash=TELEGRAM_API_HASH,
     bot_token=BOT_TOKEN,
     workers=1000,
-    max_concurrent_transmissions=10,
+    max_concurrent_transmissions=1000,
 )
 Conversation(bot)
 bot.start()
