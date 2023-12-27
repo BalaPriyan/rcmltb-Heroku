@@ -406,7 +406,7 @@ config_dict = {
 
 
 PORT = environ.get('PORT')
-Popen(f"gunicorn web.wserver:app --bind 0.0.0.0:{PORT} --worker-class gevent", shell=True)
+Popen(f"gunicorn qbitweb.wserver:app --bind 0.0.0.0:{PORT} --worker-class gevent", shell=True)
 
 
 
