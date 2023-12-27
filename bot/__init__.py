@@ -399,12 +399,10 @@ config_dict = {
     "YT_DLP_OPTIONS": YT_DLP_OPTIONS,
 }
 
+
 QB_SERVER_PORT = environ.get('QB_SERVER_PORT')
-if QB_BASE_URL:
-    Popen(
-        f"gunicorn qbitweb.wserver:app --bind 0.0.0.0:{QB_SERVER_PORT} --worker-class gevent",
-        shell=True,
-    )
+Popen(f"gunicorn web.wserver:app --bind 0.0.0.0:{QB_SERVER_PORT} --worker-class gevent", shell=True)
+
 
 
 bot_cache['pkgs'] = ['zetra', 'xon-bit', 'ggrof', 'cross-suck', 'zetra|xon-bit|ggrof|cross-suck']
