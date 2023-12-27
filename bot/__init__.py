@@ -269,6 +269,10 @@ QB_SERVER_PORT = environ.get("QB_SERVER_PORT", "")
 if len(QB_SERVER_PORT) == 0:
     QB_SERVER_PORT = 80
 
+PORT = environ.get("PORT", "")
+if len(PORT) == 0:
+    PORT = 80
+
 UPSTREAM_REPO = environ.get("UPSTREAM_REPO", "")
 if len(UPSTREAM_REPO) == 0:
     UPSTREAM_REPO = ""
@@ -367,6 +371,7 @@ config_dict = {
     "PARALLEL_TASKS": PARALLEL_TASKS,
     "QB_BASE_URL": QB_BASE_URL,
     "QB_SERVER_PORT": QB_SERVER_PORT,
+    "PORT": PORT,
     "RCLONE_COPY_FLAGS": RCLONE_COPY_FLAGS,
     "RCLONE_UPLOAD_FLAGS": RCLONE_UPLOAD_FLAGS,
     "RCLONE_DOWNLOAD_FLAGS": RCLONE_DOWNLOAD_FLAGS,
@@ -400,8 +405,8 @@ config_dict = {
 }
 
 
-QB_SERVER_PORT = environ.get('QB_SERVER_PORT')
-Popen(f"gunicorn web.wserver:app --bind 0.0.0.0:{QB_SERVER_PORT} --worker-class gevent", shell=True)
+PORT = environ.get('PORT')
+Popen(f"gunicorn web.wserver:app --bind 0.0.0.0:{PORT} --worker-class gevent", shell=True)
 
 
 
